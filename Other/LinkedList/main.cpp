@@ -8,11 +8,22 @@ struct Node {
 
 template<typename T>
 struct LinkedList {
-    Node<T> head;
+    Node<T>* head;
+    Node<T>* end;
+    LinkedList(T item) {
+        head = new(item, NULL);
+        end = head;
+    }
+    ~LinkedList() {
+        
+    }
+    void insert(T item) {
+
+    }
 };
 
 int main() {
-    LinkedList<int> test{Node<int>{1, NULL}};
+    LinkedList<int> test{1};
     Node<int> next{2, NULL};
     test.head.next = &next;
     std::cout << test.head.next->data << std::endl;

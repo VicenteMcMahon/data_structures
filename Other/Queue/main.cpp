@@ -5,8 +5,8 @@ struct Queue {
     private:
         T* front = queueData; // The front pointer.
         T* rear = queueData - 1; // The rear pointer.
-    public:
         size_t size = 0; // Size of the queue.
+    public:
         T queueData[S] = {}; // The data of the queue.
         void enQueue(T value) {
             // If the array is full, don't add the item.
@@ -14,28 +14,35 @@ struct Queue {
                 std::cout << "Array is full" << std::endl;
                 return;
             }
-            rear++; // Increment the rear pointer.
+            rear++;
+            if (rear >= queueData + S) rear = queueData;
             *rear = value; // Set value to the location of the rear pointer.
             size++; // Increment the size.
         }
         T* deQueue() {
             if (isEmpty()) return NULL; // Don't return anything if there is nothing in the list.
-            front++; // Increment the front pointer.
+            front++;
+            if (front >= queueData + S) front = queueData;
             size--; // Decrement the size.
             return front - 1; // Return the pointer to the element at the original front value.
         }
-        size_t isFull() {
-            return rear >= queueData + S; // If rear memory adress is bigger than than the memory adress of the end of the list.
+        bool isFull() {
+            // return rear >= queueData + S; // If rear memory adress is bigger than than the memory adress of the end of the list.
+            return size >= S;
         }
-        size_t isEmpty() {
+        bool isEmpty() {
             return size == 0;
         }
         void print() {
-            for (T* i = front; i <= rear; i++) std::cout << *i << std::endl;
+            for (T* i = queueData; i < queueData+S; i++) {
+                std::cout << *i << (((i < front && rear > front) || (i > rear && i < front && rear < front)) ? " DELETED" : "") << std::endl;
+            }
         }
 };
 
 int main() {
+    // Queue<unsigned long long int, 32768> test{};
+    // for (unsigned long long int i = 0; i < 32768; i++) test.enQueue(i);
     Queue<const char*, 5> test{}; // Creates a queue.
     test.enQueue("Bob");
     test.enQueue("Dave");
@@ -45,7 +52,7 @@ int main() {
     test.deQueue();
     test.enQueue("Ned");
     test.enQueue("James");
-    test.enQueue("No Name");
+    test.deQueue();
     test.print(); // Prints the list.
     return 0; // Exit the program with no error value.
 }

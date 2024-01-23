@@ -10,7 +10,7 @@ struct Queue { // Defines a data structure called 'Queue'.
     public: // Where the public properties and methods are defined.
         void enQueue(T value) { // Defines a procedure called 'enQueue' that takes in a value of type 'T'.
             if (isFull()) { // If the array is full, don't add the item.
-                std::cout << "Array is full" << std::endl; // Outputs 'Array is full' to the console.
+                std::cout << "Array Is Full" << std::endl; // Outputs 'Array is full' to the console.
                 return; // Exits the function.
             } // End of the if statement.
             rear++; // Increment the rear pointer to point to the next item in the array.

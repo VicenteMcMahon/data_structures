@@ -4,7 +4,7 @@ from typing_extensions import Self
 T = TypeVar('T')
 class Node(Generic[T]):
     datum: T
-    next: Self
+    next: Union[Self, None]
     def __init__(self: Self, datum: T, next: Union[Self, None], /):
         self.datum = datum
         self.next = next

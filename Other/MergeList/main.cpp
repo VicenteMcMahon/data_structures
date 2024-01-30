@@ -28,7 +28,7 @@ int main(void) {
         index++;
     }
     // Outputs the list.
-    for (unsigned int a = 0; a < LENGTH(list1)+LENGTH(list2); a++) {
-        std::cout << mergedList[a] << "\n";
+    for (int& a : mergedList) {
+        std::cout << a << "\n";
     }
 }

@@ -28,7 +28,7 @@ int main(void) {
         index++;
     }
     // Outputs the list.
-    for (int& a : mergedList) {
-        std::cout << a << "\n";
+    for (int& item : mergedList) {
+        std::cout << item << "\n";
     }
 }

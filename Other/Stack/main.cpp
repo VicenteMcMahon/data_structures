@@ -84,6 +84,7 @@ int main(void) {
                 break;
             case 5:
                 printf("\033[H\033[2J\033[3J");
+                print_help();
                 break;
             case 6:
                 return 0;

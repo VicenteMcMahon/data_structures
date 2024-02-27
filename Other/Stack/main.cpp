@@ -74,7 +74,7 @@ int main(void) {
                 break;
             }
             case 3:
-                printf("%d\n", stack.is_empty());
+                printf("%s\n", stack.is_empty() ? "true" : "false");
                 break;
             case 4:
                 stack.traverse([](Node<char>* item) {
